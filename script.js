@@ -1,4 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+  const toggleBtn = document.querySelector("[data-twe-collapse-init]");
+  const menu = document.querySelector(toggleBtn.getAttribute("data-twe-target"));
+
+  toggleBtn.addEventListener("click", () => {
+    const isHidden = menu.classList.contains("hidden");
+    if (isHidden) {
+      menu.classList.remove("hidden");
+      menu.classList.add("flex"); // ou outra classe para exibir
+      toggleBtn.setAttribute("aria-expanded", "true");
+    } else {
+      menu.classList.add("hidden");
+      menu.classList.remove("flex");
+      toggleBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+
   const chartSelector = '#hs-single-area-chart';
 
   // Inicializa o gráfico com dados da tabela1 por padrão
